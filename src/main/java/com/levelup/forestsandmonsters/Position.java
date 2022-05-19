@@ -1,23 +1,23 @@
 package com.levelup.forestsandmonsters;
 
 public class Position {
-    public int X = 1;
-    private int Y = 1;    
+    private int Row;
+    private int Col;    
     
     // Getter
-    public int getX() {
-        return X;
+    public int getRow() {
+        return this.Row;
     }
-    public int getY() {
-        return Y;
+    public int getCol() {
+        return this.Col;
     }
 
     //Setter
-    public void setX(int V) {
-        this.X = V;
+    public void setRow(int V) {
+        this.Row = V;
     }
-    public void setY(int V) {
-        this.Y = V;
+    public void setCol(int V) {
+        this.Col = V;
     }
 
 }

@@ -8,8 +8,8 @@ public class Map {
     // Create Character Position
     public Position createPosition() {
         Position pos1 = new Position();
-        pos1.setX(1);
-        pos1.setY(1);
+        pos1.setRow(1);
+        pos1.setCol(1);
         return pos1;
     }
     
@@ -18,7 +18,10 @@ public class Map {
     public boolean validatePosition(Position newPos) {
         Position pos1 = newPos;
         //code for validate
-        if pos1.getX()=
+        if ( (pos1.getRow() < 1) || (pos1.getRow() > 10))
+            return false;
+        if ( (pos1.getCol() < 1) || (pos1.getCol() > 10))
+            return false;
         return true;
     }
  }

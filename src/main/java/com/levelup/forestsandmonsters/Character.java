@@ -37,9 +37,9 @@ public class Character {
 
     public Position getStartingPosition()
     {
-        Position thisEPosition = new Position();
-        thisPosition.setX(1);
-        thisPosition.setY(1);
+        Position thisPosition = new Position();
+        thisPosition.setRow(1);
+        thisPosition.setCol(1);
         return thisPosition;
 
     }

@@ -50,9 +50,9 @@ public class LevelUpGame implements Quit.Command {
   @ShellMethodAvailability("startedCheck")
   public void moveNorth() {
     gameController.move(GameController.DIRECTION.NORTH);
-    System.out.println("You are at: " +gameController.getStatus().currPos.getX() +" , " +
-    gameController.getStatus().currPos.getY());
-    System.out.println(gameController.getStatus().currPos.getX());
+    System.out.println("You are at: " +gameController.getStatus().currPos.getRow() +" , " +
+    gameController.getStatus().currPos.getCol());
+    System.out.println(gameController.getStatus().currPos.getRow());
     updateStatus(gameController.getStatus());
   }
 
