@@ -6,7 +6,7 @@ import org.junit.Test;
 public class MapTest {
     @Test
     public void InitializationCreatesResults() {
-        GameController testObj = new GameController();
+        Map testObj = new Map();
         assertNotNull(testObj.status);
     }
 }

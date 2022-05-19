@@ -5,7 +5,7 @@ import org.junit.Test;
 public class CharacterTest {
     @Test
     public void ReturnStartingPosition() {
-        GameController testObj = new GameController();
-        assertNotNull(testObj.status);
+        Character myChar = new Character("test");
+        assert(myChar.name == "test");
     }
 }

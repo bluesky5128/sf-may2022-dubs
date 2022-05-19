@@ -49,9 +49,12 @@ public class LevelUpGame implements Quit.Command {
   @ShellMethod(value = "Move North", key = { "N", "n" }, group = "Move")
   @ShellMethodAvailability("startedCheck")
   public void moveNorth() {
+    System.out.println("You are at: " +gameController.getStatus().currPos.getRow() +" , " +
+    gameController.getStatus().currPos.getCol());
     gameController.move(GameController.DIRECTION.NORTH);
     System.out.println("You are at: " +gameController.getStatus().currPos.getRow() +" , " +
     gameController.getStatus().currPos.getCol());
+    
     System.out.println(gameController.getStatus().currPos.getRow());
     updateStatus(gameController.getStatus());
   }

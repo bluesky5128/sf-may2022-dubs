@@ -20,5 +20,10 @@ public class Position {
         this.Col = V;
     }
 
+    public Position(int i, int j)
+    {
+        this.Col = j;
+        this.Row = i;
+    }
 }
 

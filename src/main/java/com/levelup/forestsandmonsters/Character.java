@@ -1,5 +1,6 @@
 package com.levelup.forestsandmonsters;
 
+import com.levelup.forestsandmonsters.GameController.DIRECTION;
 
 public class Character {
     // TODO: If your stakeholder wants to call this CHARACTER, change var name for
@@ -7,7 +8,7 @@ public class Character {
  
     String name;
     int numMove;
-    //Position newPos
+    Position currentPosition;
 
     public Position getPosition()
     {
@@ -16,12 +17,19 @@ public class Character {
 
     public void setPosition(Position newPos )
     {
-
+        currentPosition = newPos;
     }
 
     public Position calculatePosition(Position cPos, String direction )
     {
-        return null;
+        int row = cPos.getRow();
+        int col = cPos.getCol();
+        // Position newPos = new Position();
+        if (direction == DIRECTION.SOUTH.name()) { ++row; }
+        else if (direction == DIRECTION.NORTH.name()) { --row; }
+        else if (direction == DIRECTION.EAST.name()) { ++col; }
+        else if (direction == DIRECTION.WEST.name()) { --col; }
+        return new Position(row,col);
     }
 
     public void enterMap(Map thisMap)
@@ -37,16 +45,19 @@ public class Character {
 
     public Position getStartingPosition()
     {
-        Position thisPosition = new Position();
-        thisPosition.setRow(1);
-        thisPosition.setCol(1);
+        Position thisPosition = new Position(1,1);
+        // thisPosition.setRow(1);
+        // thisPosition.setCol(1);
         return thisPosition;
 
     }
 
+    Map characterMap;
 
     public Character(String inName) {
         this.name = inName;
+        this.characterMap = new Map();
+        this.currentPosition = getStartingPosition();
         
     }
 }

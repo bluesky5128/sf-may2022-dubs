@@ -3,7 +3,7 @@ package com.levelup.forestsandmonsters.features;
 import static org.junit.Assert.assertEquals;
 
 import com.levelup.forestsandmonsters.GameController;
-import com.levelup.forestsandmonsters.GameController.Position;
+//import com.levelup.forestsandmonsters.GameController.Position;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

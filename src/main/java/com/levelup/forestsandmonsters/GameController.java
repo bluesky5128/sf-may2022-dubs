@@ -7,12 +7,13 @@ public class GameController {
     // low representational gap
     static final String DEFAULT_PLAYER_NAME = "Player";
     Character myChar = null;
+    Map myMap;
 
     public class GameStatus {
         // TODO: Add other status data
         public String playerName = DEFAULT_PLAYER_NAME;
         //public String myDirection = "RIGHT";
-        public Position currPos = new Position();
+        public Position currPos = null;
     }
 
 //     public class Position
@@ -37,8 +38,10 @@ public class GameController {
     // TODO: Update this if it does not match your design
     public void createCharacter(String name) {
         myChar = new Character(name);
+        myMap = new Map();
         status.playerName = name;
         status.currPos = myChar.getStartingPosition();
+        
         // if (name != null && !name.equals("")) {
         //     status.playerName = name;
         // } else {
@@ -53,12 +56,21 @@ public class GameController {
     }
 
     public GameStatus getStatus() {
+        myMap.printMap(myChar.currentPosition);
         return this.status;
     }
 
     public void move(DIRECTION directionToMove) {
         // TODO: Implement move - should call something on another class
         // TODO: Should probably also update the game results
+        Position cPos = myChar.currentPosition;
+
+        Position iffyPos = myChar.calculatePosition(cPos, directionToMove.toString());
+        if (myMap.validatePosition(  iffyPos)) 
+            myChar.setPosition(iffyPos) ;
+            else myChar.setPosition(cPos);    
+
+            status.currPos = myChar.currentPosition;
     }
 
 }
