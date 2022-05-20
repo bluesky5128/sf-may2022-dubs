@@ -8,4 +8,8 @@ public class CharacterTest {
         Character myChar = new Character("test");
         assert(myChar.name == "test");
     }
+    @Test 
+    public void CalculatePosition() {
+        
+    }
 }

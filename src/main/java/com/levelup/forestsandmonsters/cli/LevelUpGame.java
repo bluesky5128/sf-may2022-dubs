@@ -13,6 +13,8 @@ import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 import org.springframework.shell.standard.commands.Quit;
 
+import ch.qos.logback.core.joran.conditional.ElseAction;
+
 @ShellComponent
 public class LevelUpGame implements Quit.Command {
 
@@ -50,14 +52,15 @@ public class LevelUpGame implements Quit.Command {
   @ShellMethod(value = "Move North", key = { "N", "n" }, group = "Move")
   @ShellMethodAvailability("startedCheck")
   public void moveNorth() {
-    System.out.println("You are at: " +gameController.getStatus().currPos.getRow() +" , " +
-    gameController.getStatus().currPos.getCol());
+    // System.out.println("You are at: " +gameController.getStatus().currPos.getRow() +" , " +
+    // gameController.getStatus().currPos.getCol());
+    // gameController.move(GameController.DIRECTION.NORTH);
+    // System.out.println("You are at: " +gameController.getStatus().currPos.getRow() +" , " +
+    // gameController.getStatus().currPos.getCol());
     gameController.move(GameController.DIRECTION.NORTH);
-    System.out.println("You are at: " +gameController.getStatus().currPos.getRow() +" , " +
-    gameController.getStatus().currPos.getCol());
-    
-    System.out.println(gameController.getStatus().currPos.getRow());
     updateStatus(gameController.getStatus());
+    // System.out.println(gameController.getStatus().currPos.getRow());
+    // updateStatus(gameController.getStatus());
   }
 
   @ShellMethod(value = "Move South", key = { "S", "s" }, group = "Move")
@@ -84,19 +87,29 @@ public class LevelUpGame implements Quit.Command {
   @ShellMethod(value = "End the game", key = { "X", "x" })
   public void endGame() {
     System.out.println("You exit the mysterious world.");
-    printSummary();
+    if(gameController.intSteps==0)
+    {
+      System.out.println("Thank you for playing <" + gameController.CharName + ">");
+      System.out.println ("Starting Position: 1,1");
+      System.out.println("   Ending Position: 1,1");
+      System.out.println("   Number of Moves: 0");
+    }
+    else 
+      printSummary();
     System.exit(0);
   }
 
   private void printSummary() {
     System.out.println("Exiting the mysterious land!");
-    for (GameStatus status : gameHistory) {
-      // TODO: Override toString on game status to print pretty
-      System.out.println ("Starting Position: (1,1)");
-      System.out.println("Ending Position: " + gameController.lastPos.getRow() + "," + gameController.lastPos.getCol() );
-      System.out.println("Number of Moves: " + gameController.intSteps);
-      System.out.println(status);
-    }
+    System.out.println("Thank you for playing, " + gameController.CharName );
+     for (GameStatus status : gameHistory) {
+       // TODO: Override toString on game status to print pretty
+       System.out.println ("Starting Position: 1,1");
+       System.out.println("   Ending Position: " + gameController.lastPos.getRow() + "," + gameController.lastPos.getCol() );
+       System.out.println("   Number of Moves: " + gameController.intSteps);
+       System.out.println(status);
+       break;
+     }
     // TODO: Print anything else you committed to in your mockup
   }
 

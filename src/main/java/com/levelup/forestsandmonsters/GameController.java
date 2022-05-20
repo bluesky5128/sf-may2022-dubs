@@ -8,7 +8,8 @@ public class GameController {
     // TODO: If your stakeholder wants to call this CHARACTER, change var name for
     // low representational gap
     static final String DEFAULT_PLAYER_NAME = "Player";
-    Character myChar = null;
+    public Character myChar = null;
+    public String CharName ="";
     Map myMap;
     public int intSteps=0;
     public Position lastPos;
@@ -42,6 +43,7 @@ public class GameController {
     // TODO: Update this if it does not match your design
     public void createCharacter(String name) {
         myChar = new Character(name);
+        CharName=name;
         myMap = new Map();
         status.playerName = name;
         status.currPos = myChar.getStartingPosition();
@@ -61,6 +63,9 @@ public class GameController {
         // TODO: Implement startGame - Should probably create tiles and put the player
         // on them?
         // TODO: Should also update the game results?
+        if (myChar == null) {
+            createCharacter("Player");
+        }
     }
 
     public GameStatus getStatus() {

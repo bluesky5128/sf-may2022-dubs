@@ -7,6 +7,6 @@ public class MapTest {
     @Test
     public void InitializationCreatesResults() {
         Map testObj = new Map();
-        assertNotNull(testObj.status);
+        assertNotNull(testObj.size);
     }
 }
