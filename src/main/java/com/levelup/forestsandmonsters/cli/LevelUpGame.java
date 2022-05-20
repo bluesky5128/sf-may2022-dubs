@@ -19,7 +19,8 @@ public class LevelUpGame implements Quit.Command {
   private final GameController gameController;
   private List<GameStatus> gameHistory;
   private boolean isGameStarted = false;
-
+  public int AllSteps=0;
+  
   public LevelUpGame() {
     super();
     this.gameController = new GameController();
@@ -42,7 +43,7 @@ public class LevelUpGame implements Quit.Command {
     gameController.startGame();
     // TODO: Update this prompt. Also, do you want to get the game status and tell
     // the player where their character is?
-    System.out.println("Welcome to Forests and Monsters! You have entered a mysterious place.");
+    System.out.println("Welcome to DubsLife! You have entered a mysterious place.");
     System.out.println("Would you like to go North(N), South(S), East(E), West(W) or Exit(X)?");
   }
 
@@ -91,6 +92,9 @@ public class LevelUpGame implements Quit.Command {
     System.out.println("Exiting the mysterious land!");
     for (GameStatus status : gameHistory) {
       // TODO: Override toString on game status to print pretty
+      System.out.println ("Starting Position: (1,1)");
+      System.out.println("Ending Position: " + gameController.lastPos.getRow() + "," + gameController.lastPos.getCol() );
+      System.out.println("Number of Moves: " + gameController.intSteps);
       System.out.println(status);
     }
     // TODO: Print anything else you committed to in your mockup

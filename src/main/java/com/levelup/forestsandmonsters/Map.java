@@ -29,6 +29,9 @@ public class Map {
             return true;
         }
     
+        /*
+          This method draws character on Map of 10x10
+        */
         public void printMap(Position pos1)
         {
             for (int i =1;  i<=mapRows; i++ )

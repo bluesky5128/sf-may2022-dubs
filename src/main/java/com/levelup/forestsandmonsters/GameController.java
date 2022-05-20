@@ -2,12 +2,16 @@ package com.levelup.forestsandmonsters;
 
 import java.awt.Point;
 
+import org.hibernate.validator.internal.constraintvalidators.hv.pl.PolishNumberValidator;
+
 public class GameController {
     // TODO: If your stakeholder wants to call this CHARACTER, change var name for
     // low representational gap
     static final String DEFAULT_PLAYER_NAME = "Player";
     Character myChar = null;
     Map myMap;
+    public int intSteps=0;
+    public Position lastPos;
 
     public class GameStatus {
         // TODO: Add other status data
@@ -49,6 +53,10 @@ public class GameController {
         // }
     }
 
+    public void updateStatus(){
+
+    }
+
     public void startGame() {
         // TODO: Implement startGame - Should probably create tiles and put the player
         // on them?
@@ -57,6 +65,8 @@ public class GameController {
 
     public GameStatus getStatus() {
         myMap.printMap(myChar.currentPosition);
+        System.out.println("Would you like to go North(N), South(S), East(E), West(W) or Exit(X)?");   
+        System.out.println("You have moved " + intSteps + " Steps.");   
         return this.status;
     }
 
@@ -71,6 +81,9 @@ public class GameController {
             else myChar.setPosition(cPos);    
 
             status.currPos = myChar.currentPosition;
-    }
+            lastPos= myChar.currentPosition;
+            intSteps++;
+    
+        }
 
 }
